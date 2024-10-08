@@ -8,10 +8,21 @@ const courses = getData();
 const telegram = window.Telegram.WebApp;
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  console.log("🚀 ~ App ~ cartItems:", cartItems);
 
   useEffect(() => {
     telegram.ready();
-  });
+    telegram.MainButton.hide();
+  }, []);
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      telegram.MainButton.text = "Sotib olish :)";
+      telegram.MainButton.show();
+    } else {
+      telegram.MainButton.hide();
+    }
+  }, [cartItems]);
 
   const onAddItem = (item) => {
     const existItem = cartItems.find((c) => c.id == item.id);
@@ -43,8 +54,12 @@ function App() {
     }
   };
   const onCheckout = () => {
-    telegram.MainButton.text = "Sotib olish :)";
-    telegram.MainButton.show();
+    if (cartItems.length > 0) {
+      telegram.MainButton.text = "Sotib olish :)";
+      telegram.MainButton.show();
+    } else {
+      telegram.MainButton.hide();
+    }
   };
 
   return (
