@@ -71,7 +71,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(cartItems),
+        body: JSON.stringify({ products: cartItems, queryID }),
       });
     } else {
       telegram.telegram.sendData(JSON.stringify(cartItems));
