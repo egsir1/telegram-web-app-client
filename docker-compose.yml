@@ -1,6 +1,6 @@
 version: "3.3"
 services:
-  next-app:
+  react-app:
     container_name: web-app-client
     build: . # Ensure this points to the directory with your Dockerfile
     ports:

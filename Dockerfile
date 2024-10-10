@@ -4,4 +4,4 @@ COPY package*.json ./
 RUN npm install --production
 COPY . . 
 RUN npm run build
-CMD ["npm", "run", "preview"]
+CMD ["npm", "run", "preview", "--", "--port", "3002"]
