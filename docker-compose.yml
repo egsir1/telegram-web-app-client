@@ -1,11 +1,21 @@
-version: "3.3"
 services:
-  react-app:
-    container_name: web-app-client
-    build: . # Ensure this points to the directory with your Dockerfile
+  web-bot-client:
+    container_name: web-bot-client
+    restart: always
+    image: node:20.12.2
     ports:
-      - "3002:3002"
-    volumes:
-      - .:/app # Only if you want to mount your local code for development
+      - 3002:3002
     environment:
-      - NODE_ENV=production
+      - PORT=3002
+    volumes:
+      - ./:/usr/src/web-bot-client
+    working_dir: /usr/src/web-bot-client
+
+    networks:
+      - web_client
+
+    command: bash -c "npm install  && npm run build && npm run preview"
+
+networks:
+  web_client:
+    driver: bridge
