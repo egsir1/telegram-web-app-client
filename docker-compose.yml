@@ -6,7 +6,7 @@ services:
     restart: always
     image: node:20.14.0
     ports:
-      - "8000:8000"
+      - "3002:3002"
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
