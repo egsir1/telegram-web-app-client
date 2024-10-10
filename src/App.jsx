@@ -66,7 +66,7 @@ function App() {
     const queryID = telegram.initDataUnsafe?.query_id;
 
     if (queryID) {
-      fetch("http://localhost:8000/web-data", {
+      fetch("http://191.96.31.116:8000/web-data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
