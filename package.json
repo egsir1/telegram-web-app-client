@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "next start -p 3002",
     "lint": "eslint .",
     "preview": "vite preview"
   },
