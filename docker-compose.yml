@@ -1,21 +1,11 @@
 version: "3.3"
-
 services:
-  node:
-    container_name: telegram_web_client
-    restart: always
-    image: node:20.14.0
+  next-app:
+    container_name: web-app-client
+    build: . # Ensure this points to the directory with your Dockerfile
     ports:
       - "3002:3002"
     volumes:
-      - ./:/usr/src/app
-    working_dir: /usr/src/app
-
-    networks:
-      - web_bot_client
-
-    command: bash -c "npm install && npm run start:prod"
-
-networks:
-  web_bot_client:
-    driver: bridge
+      - .:/app # Only if you want to mount your local code for development
+    environment:
+      - NODE_ENV=production
